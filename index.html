@@ -4,23 +4,12 @@
     <title>Hello, WebVR! - A-Frame</title>
     <meta name="description" content="Hello, WebVR! - A-Frame">
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-    <script>
-      AFRAME.registerComponent('ground', {
-        init: function () {
-          var sceneEl = document.querySelector('a-scene'); 
-          for (var i = 0; i < 50; i++) {
-            var boxEl = document.createElement('a-plane');
-            if(i%2 == 0 ) boxEl.setAttribute('material', {color: '#FFFFFF'});
-            else boxEl.setAttribute('material', {color: '#404040'});
-            boxEl.setAttribute('position', {x: 0, y: -1, z:-50-i });
-            boxEl.setAttribute('rotation', {x: -90, y: 0, z:0 });
-            sceneEl.appendChild(boxEl);
-      }}});
-    </script>
   </head>
   <body>
     <a-scene>
-      <a-entity ground></a-entity>
+      <a-plane position="0 -1 0" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"
+      material="src:https://cdn.hyperdev.com/paste-me.svg?v=1477325869954"
+               ></a-plane>
       <a-sky color="#000000"></a-sky>
     </a-scene>
   </body>
