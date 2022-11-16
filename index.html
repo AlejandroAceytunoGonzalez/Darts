@@ -7,8 +7,15 @@
   </head>
   <body>
     <a-scene>
-      <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#FFFFFF"
-      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ground.png?v=1668615259352);repeat: 20 20"
+      <!-- Ground ceiling and 4 walls-->
+      <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#FFFFFF"
+      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ground.png?v=1668615259352);repeat: 10 10"
+      ></a-plane>
+      <a-plane position="0 4 0" rotation="90 0 0" width="10" height="10" color="#FFFFFF"
+      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ceiling.png?v=1668616722428);repeat: 10 10"
+      ></a-plane>
+      <a-plane position="0 0 -5" rotation="0 0 0" width="10" height="10" color="#FFFFFF"
+      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ceiling.png?v=1668616722428);repeat: 10 10"
       ></a-plane>
       <a-sphere position="0 2 -5" rotation="0 0 0" width="1" height="1" color="#FFFA8A"></a-sphere>
       <a-sky color="#000000"></a-sky>
