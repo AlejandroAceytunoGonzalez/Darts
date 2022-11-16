@@ -11,7 +11,7 @@
       <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#FFFFFF"
       material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ground.png?v=1668615259352);repeat: 10 10"
       ></a-plane>
-      <a-plane position="0 4 0" rotation="90 0 0" width="10" height="10" color="#FFFFFF"
+      <a-plane position="0 4 0" rotation="90 0 0" width="10" height="10" color="#232323"
       material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ceiling.png?v=1668616722428);repeat: 10 10"
       ></a-plane>
       <a-plane position="0 0 -5" rotation="0 0 0" width="10" height="10" color="#808080"
@@ -26,11 +26,18 @@
       <a-plane position="5 0 0" rotation="0 -90 0" width="10" height="10" color="#808080"
       material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/wall.png?v=1668617012570);repeat: 10 10"
       ></a-plane>
-      
-      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 0" position="2.5 2.5 2.5"></a-entity>
-      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 0" position="-2.5 2.5 2.5"></a-entity>
-      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 0" position="-2.5 2.5 -2.5"></a-entity>
-      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 0" position="2.5 2.5 -2.5"></a-entity>
+      <!--Lighting-->
+      <a-light type="hemisphere" position="0 0 0" rotation="-90 0 0" target="#directionaltarget" intensity="0.7">
+        <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
+      </a-light>
+      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 1"
+      position="2.5 3 2.5"><a-box position="0 1 0" scale="0.1 1 0.1"></a-box ><a-box scale="0.5 0.5 0.5"></a-box></a-entity>
+      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 1"
+      position="2.5 3 -2.5"></a-entity>
+      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 1"
+      position="-2.5 3 -2.5"></a-entity>
+      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 1"
+      position="-2.5 3 2.5"></a-entity>
       <a-sphere position="0 2 -5" rotation="0 0 0" width="1" height="1" color="#FFFA8A"></a-sphere>
       <a-sky color="#000000"></a-sky>
     </a-scene>
