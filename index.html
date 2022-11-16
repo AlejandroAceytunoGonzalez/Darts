@@ -3,11 +3,14 @@
   <head>
     <title>Darts</title>
     <meta name="description" content="Darts">
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
-      <!-- Ground ceiling and 4 walls-->
+        <a-assets>
+          <a-asset-item id="tree" src="/path/to/tree.gltf"></a-asset-item>
+        </a-assets>
+            <!-- Ground ceiling and 4 walls-->
       <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#FFFFFF"
       material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ground.png?v=1668615259352);repeat: 10 10"
       ></a-plane>
@@ -38,6 +41,8 @@
       position="-2.5 3.5 -2.5"><a-box position="0 0.5 0" scale="0.1 0.5 0.1"></a-box ><a-box scale="0.5 0.5 0.5" color="#FF7B7B"></a-box></a-entity>
       <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 1"
       position="-2.5 3.5 2.5"><a-box position="0 0.5 0" scale="0.1 0.5 0.1"></a-box ><a-box scale="0.5 0.5 0.5" color="#FF7B7B"></a-box></a-entity>
+      
+      <a-entity gltf-model="#tree"></a-entity>
       
       <a-plane position="2.5 2 -4.99" rotation="0 0 0" width="1" height="1.41" color="#808080"
       material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/Darts.png?v=1668619827457)"
