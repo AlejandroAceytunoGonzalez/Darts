@@ -26,7 +26,7 @@
       <a-plane position="5 0 0" rotation="0 -90 0" width="10" height="10" color="#808080"
       material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/wall.png?v=1668617012570);repeat: 10 10"
       ></a-plane>
-      <a-plane position="0 0.01 -3" rotation="-90 0 0" height="2"></a-plane>
+      <a-plane position="0 0.01 -3" rotation="-90 0 0" width="1.25" height="8" color="#808080"></a-plane>
       <!--Lighting-->
       <a-light type="hemisphere" position="0 0 0" rotation="-90 0 0" target="#directionaltarget" intensity="0.7">
         <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
@@ -40,7 +40,10 @@
       <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 1"
       position="-2.5 3.5 2.5"><a-box position="0 0.5 0" scale="0.1 0.5 0.1"></a-box ><a-box scale="0.5 0.5 0.5" color="#FF7B7B"></a-box></a-entity>
       
-      <a-sphere position="0 2 -5"></a-sphere>
+      <a-entity obj-model="obj: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/DartBoard.obj?v=1668623819262); 
+                           mtl: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/DartBoard.mtl?v=1668623817512)"
+      scale= "0.15 0.15 0.15"         
+      ></a-entity>
       
       <a-plane position="3 2 -4.99" rotation="0 0 0" width="2" height="2.82" color="#808080"
       material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/Darts.png?v=1668619827457)"
