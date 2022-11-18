@@ -36,46 +36,13 @@ AFRAME.registerComponent("physics-grab", {
     
   </head>
   <body>
-    <a-scene <!DOCTYPE html>
-<html>
-  <head>
-    <title>Darts</title>
-    <meta name="description" content="Darts">
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
-    <script src="js/aframe-environment-component.js"></script>
-    <script src="js/controller-listener.js"></script>
-    <script src="js/player-move.js"></script>
-    <script src="js/raycaster-extras.js"></script>
-     <script src="js/physx.release.js"></script>
-    <script src="js/physics.js"></script>
-    <script>
-
-AFRAME.registerComponent("physics-grab", {
-    init: function () 
-    {
-        let self = this;
-
-        this.el.addEventListener("raycaster-grabbed", function() {
-           self.el.addState("grabbed"); 
-        });
-
-        this.el.addEventListener("raycaster-released", function() {
-           self.el.removeState("grabbed"); 
-        });
-    },
-
-    tick: function()
-    {
-
-    }
-});
-      </script>
-    
-  </head>
-  <body>
-    <a-scene environment="preset: default;"
-         physx="autoLoad: true; delay: 1000; wasmUrl: js/physx.release.wasm; useDefaultScene: false;">
+    <a-scene>
+      
+      <a-assets>
+        <img id="gradient" src="https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/gradient-fade.png?v=1668771898878" />
+    </a-assets>
+      
+      
       <!-- Ground ceiling and 4 walls-->
       
       <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#FFFFFF"
@@ -117,112 +84,13 @@ AFRAME.registerComponent("physics-grab", {
       ></a-entity>
       <!--Darts-->
       
-      <a-entity position="0.6 1.02 -0.2" physx-body="type: dynamic; highPrecision: true;"
+      <a-entity position="0.6 2.02 -0.2">
+        <a-entity obj-model="obj: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.obj?v=1668623804753); 
+                             mtl: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.mtl?v=1668623809200)"
+        scale= "0.15 0.15 0.15" rotation="180 0 0" position="0.95 0.1 -0.4"         
+        physx-body="type: dynamic; highPrecision: true;"
          raycaster-target="canGrab: true;"
-         physics-grab>
-        <a-entity obj-model="obj: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.obj?v=1668623804753); 
-                             mtl: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.mtl?v=1668623809200)"
-        scale= "0.15 0.15 0.15" rotation="180 0 0" position="0.95 0.1 -0.4"         
-        ></a-entity>
-      </a-entity>
-      
-      <a-entity position="0.7 1.02 -0.2" physx-body="type: kinematic;" raycaster-target="canGrab: true;">
-        <a-entity obj-model="obj: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.obj?v=1668623804753); 
-                             mtl: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.mtl?v=1668623809200)"
-        scale= "0.15 0.15 0.15" rotation="180 0 0" position="0.95 0.1 -0.4"         
-        ></a-entity>
-      </a-entity>
-      
-      <a-entity position="0.5 1.02 -0.2">
-        <a-entity obj-model="obj: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.obj?v=1668623804753); 
-                             mtl: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.mtl?v=1668623809200)"
-        scale= "0.15 0.15 0.15" rotation="180 0 0" position="0.95 0.1 -0.4"         
-        ></a-entity>
-      </a-entity>
-      
-      <!--Table-->
-      
-      <a-box scale= "0.5 0.01 0.5" rotation="0 0 0" position="0.6 1 -0.2"
-      material="src:url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/wood.png?v=1668669796681)"
-      ></a-box>
-      <a-box scale= "0.1 2 0.1" rotation="0 0 0" position="0.6 0 -0.2"
-      material="src:url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/wood.png?v=1668669796681)"
-      ></a-box>
-      
-      <!--Person-->
-      <a-entity 
-            id="controller-data" 
-            controller-listener="leftControllerId:  #left-controller; 
-                                 rightControllerId: #right-controller;">
-        </a-entity>
-      <a-entity id="rig">
-        <a-camera position="0 1.6 0"></a-camera>
-        <a-entity oculus-touch-controls="hand: left" oculus-thumbstick-controls></a-entity>
-        <a-entity oculus-touch-controls="hand: right"
-                  raycaster="objects: .raycaster-target, .environmentGround;"
-            raycaster-extras="controllerListenerId: #controller-data; 
-                              beamImageSrc: #gradient; beamLength: 0.5;"></a-entity>
-      </a-entity>
-      
-      <!--Miscelaneous-->
-      <a-plane position="0 0.01 -3" rotation="-90 0 0" width="1.25" height="8" color="#2B2B2B" 
-      material="src:url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/rug.png?v=1668625555054); repeat:1 10"
-      ></a-plane>
-      <a-plane position="3 2 -4.99" rotation="0 0 0" width="2" height="2.82" color="#808080"
-      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/Darts.png?v=1668619827457)"
-      ></a-plane>
-      <a-sky color="#000000"></a-sky>
-    </a-scene>
-  </body>
-</html>
-      <!-- Ground ceiling and 4 walls-->
-      
-      <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#FFFFFF"
-      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ground.png?v=1668615259352);repeat: 10 10"
-      ></a-plane>
-      <a-plane position="0 4 0" rotation="90 0 0" width="10" height="10" color="#232323"
-      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ceiling.png?v=1668616722428);repeat: 10 10"
-      ></a-plane>
-      <a-plane position="0 0 -5" rotation="0 0 0" width="10" height="10" color="#808080"
-      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/wall.png?v=1668617012570);repeat: 10 10"
-      ></a-plane>
-      <a-plane position="0 0 5" rotation="0 180 0" width="10" height="10" color="#808080"
-      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/wall.png?v=1668617012570);repeat: 10 10"
-      ></a-plane>
-      <a-plane position="-5 0 0" rotation="0 90 0" width="10" height="10" color="#808080"
-      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/wall.png?v=1668617012570);repeat: 10 10"
-      ></a-plane>
-      <a-plane position="5 0 0" rotation="0 -90 0" width="10" height="10" color="#808080"
-      material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/wall.png?v=1668617012570);repeat: 10 10"
-      ></a-plane>
-      <!--Lighting-->
-      
-      <a-light type="hemisphere" position="0 0 0" rotation="-90 0 0" target="#directionaltarget" intensity="0.7">
-        <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
-      </a-light>
-      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 1"
-      position="2.5 3.5 2.5"><a-box position="0 0.5 0" scale="0.1 0.5 0.1"></a-box ><a-box scale="0.5 0.5 0.5" color="#FF7B7B"></a-box></a-entity>
-      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 1"
-      position="2.5 3.5 -2.5"><a-box position="0 0.5 0" scale="0.1 0.5 0.1"></a-box ><a-box scale="0.5 0.5 0.5" color="#FF7B7B"></a-box></a-entity>
-      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 1"
-      position="-2.5 3.5 -2.5"><a-box position="0 0.5 0" scale="0.1 0.5 0.1"></a-box ><a-box scale="0.5 0.5 0.5" color="#FF7B7B"></a-box></a-entity>
-      <a-entity light="type: point; intensity: 0.3; distance: 10; decay: 1"
-      position="-2.5 3.5 2.5"><a-box position="0 0.5 0" scale="0.1 0.5 0.1"></a-box ><a-box scale="0.5 0.5 0.5" color="#FF7B7B"></a-box></a-entity>
-      <!--DartBoard-->
-      
-      <a-entity obj-model="obj: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/DartBoard.obj?v=1668623819262); 
-                           mtl: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/DartBoard.mtl?v=1668623817512)"
-      scale= "0.15 0.15 0.15" rotation="90 0 0" position="0.03 2 -5"         
-      ></a-entity>
-      <!--Darts-->
-      
-      <a-entity position="0.6 1.02 -0.2" physx-body="type: dynamic; highPrecision: true;"
-         raycaster-target="canGrab: true;"
-         physics-grab>
-        <a-entity obj-model="obj: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.obj?v=1668623804753); 
-                             mtl: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.mtl?v=1668623809200)"
-        scale= "0.15 0.15 0.15" rotation="180 0 0" position="0.95 0.1 -0.4"         
-        ></a-entity>
+         physics-grab></a-entity>
       </a-entity>
       
       <a-entity position="0.7 1.02 -0.2">
@@ -249,6 +117,42 @@ AFRAME.registerComponent("physics-grab", {
       ></a-box>
       
       <!--Person-->
+       <a-entity 
+        id="player" 
+        position="0 0 0" 
+        player-move="controllerListenerId: #controller-data;
+                     navigationMeshClass: environmentGround;">
+        
+         <a-camera position="0 1.6 0"></a-camera>
+    
+        <a-entity 
+            id="controller-data" 
+            controller-listener="leftControllerId:  #left-controller; 
+                                 rightControllerId: #right-controller;">
+        </a-entity>
+
+        <a-entity 
+            id="left-controller"
+            oculus-touch-controls="hand: left">
+        </a-entity>
+
+        <a-entity
+            id="right-controller"
+            oculus-touch-controls="hand: right"
+            raycaster="objects: .raycaster-target, .environmentGround;"
+            raycaster-extras="controllerListenerId: #controller-data; 
+                              beamImageSrc: #gradient; beamLength: 0.5;">
+        </a-entity>
+
+    </a-entity>
+      <!--
+      
+      <a-entity 
+        id="player" 
+        position="0 0 0" 
+        player-move="controllerListenerId: #controller-data;
+                     navigationMeshClass: environmentGround;">
+      
       <a-entity 
             id="controller-data" 
             controller-listener="leftControllerId:  #left-controller; 
@@ -261,7 +165,7 @@ AFRAME.registerComponent("physics-grab", {
                   raycaster="objects: .raycaster-target, .environmentGround;"
             raycaster-extras="controllerListenerId: #controller-data; 
                               beamImageSrc: #gradient; beamLength: 0.5;"></a-entity>
-      </a-entity>
+      </a-entity>-->
       
       <!--Miscelaneous-->
       <a-plane position="0 0.01 -3" rotation="-90 0 0" width="1.25" height="8" color="#2B2B2B" 
