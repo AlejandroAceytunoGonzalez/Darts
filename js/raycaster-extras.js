@@ -211,9 +211,6 @@ AFRAME.registerComponent('raycaster-extras', {
                 this.grabbedElement = this.focusedElement;
                 this.grabbedElement.components["raycaster-target"].isGrabbed = true;
               
-                var rightHand = document.querySelector('#right-controller');
-                this.grabbedElement.SetAttribute('position',{x: rightHand.object3D.position.x,y: rightHand.object3D.position.y,z: rightHand.object3D.position.z});
-
                 // emit an event
                 this.grabbedElement.emit( "raycaster-grabbed", {el: this.grabbedElement} );
             }
