@@ -204,11 +204,16 @@ AFRAME.registerComponent('raycaster-extras', {
                 this.cursorBorder.object3D.visible = false;
 
                 // turn off emission (set by raycaster-hover-glow)
-                this.focusedElement.setAttribute("material", "emissive", "#000000");
+                
+              //is.focusedElement.setAttribute("material", "emissive", "#000000");
 
                 // focused element is now also the grabbed element
                 this.grabbedElement = this.focusedElement;
                 this.grabbedElement.components["raycaster-target"].isGrabbed = true;
+              
+                var rightHand = document.querySelector('#right-controller');
+                this.grabbedElement.SetAttribute('position',rightHand.position);
+                console.log(rightHand.position);
 
                 // emit an event
                 this.grabbedElement.emit( "raycaster-grabbed", {el: this.grabbedElement} );
