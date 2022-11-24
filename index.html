@@ -50,7 +50,7 @@ AFRAME.registerComponent("physics-grab", {
       <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#FFFFFF"
       material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ground.png?v=1668615259352);repeat: 10 10"
       ></a-plane>
-      <a-plane position="0 4 0" rotation="90 0 0" width="10" height="10" color="#232323"
+      <a-plane position="0 4 0" rotation="90 0 0" width="10" height="10" color="#232323" 
       material="src:url(https://cdn.glitch.global/ded29ddb-15bc-4dc8-8a43-f0cdf6c47c3d/ceiling.png?v=1668616722428);repeat: 10 10"
       ></a-plane>
       <a-plane position="0 0 -5" rotation="0 0 0" width="10" height="10" color="#808080"
@@ -86,7 +86,7 @@ AFRAME.registerComponent("physics-grab", {
       ></a-entity>
       <!--Darts-->
       
-      <a-entity position="0.6 1.02 -0.2">
+      <a-entity position="0.6 1.05 -0.2">
         <a-entity obj-model="obj: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.obj?v=1668623804753); 
                              mtl: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.mtl?v=1668623809200)"
         scale= "0.15 0.15 0.15" rotation="180 0 0" position="0.95 0.1 -0.4"         
@@ -94,7 +94,7 @@ AFRAME.registerComponent("physics-grab", {
          raycaster-target="canGrab: true;"
          physics-grab></a-entity>
       </a-entity>
-      <a-entity position="0.7 1.02 -0.2">
+      <a-entity position="0.7 1.05 -0.2">
         <a-entity obj-model="obj: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.obj?v=1668623804753); 
                              mtl: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.mtl?v=1668623809200)"
         scale= "0.15 0.15 0.15" rotation="180 0 0" position="0.95 0.1 -0.4"         
@@ -102,7 +102,7 @@ AFRAME.registerComponent("physics-grab", {
          raycaster-target="canGrab: true;"
          physics-grab></a-entity>
       </a-entity>
-      <a-entity position="0.5 1.02 -0.2">
+      <a-entity position="0.5 1.05 -0.2">
         <a-entity obj-model="obj: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.obj?v=1668623804753); 
                              mtl: url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/Dart.mtl?v=1668623809200)"
         scale= "0.15 0.15 0.15" rotation="180 0 0" position="0.95 0.1 -0.4"         
@@ -114,10 +114,10 @@ AFRAME.registerComponent("physics-grab", {
       
       <!--Table-->
       
-      <a-box scale= "0.5 0.01 0.5" rotation="0 0 0" position="0.6 1 -0.2"
+      <a-box scale= "0.5 0.01 0.5" rotation="0 0 0" position="0.6 1 -0.2" physx-body="type: static;"
       material="src:url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/wood.png?v=1668669796681)"
       ></a-box>
-      <a-box scale= "0.1 2 0.1" rotation="0 0 0" position="0.6 0 -0.2"
+      <a-box scale= "0.1 2 0.1" rotation="0 0 0" position="0.6 0 -0.2" physx-body="type: static;"
       material="src:url(https://cdn.glitch.global/1664b978-af6c-4da8-930e-9595fbc74ab5/wood.png?v=1668669796681)"
       ></a-box>
       
